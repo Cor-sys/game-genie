@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://bfi1mm158ge5l" path="res://addons/dockable_container/dockable_container.gd" id="35"]
 [ext_resource type="Script" uid="uid://da67x3ua6ietw" path="res://addons/dockable_container/layout_panel.gd" id="36"]
 [ext_resource type="Script" uid="uid://bssab6bm6lntw" path="res://src/UI/UI.gd" id="37"]
+[ext_resource type="PackedScene" uid="uid://gg_rig_panel_01" path="res://src/GameGenie/UI/RigPanel.tscn" id="GG_RigPanel"]
 
 [sub_resource type="Resource" id="Resource_xnnnd"]
 resource_name = "Tabs"
@@ -134,7 +135,7 @@ second = SubResource("Resource_24rfh")
 [sub_resource type="Resource" id="Resource_ugja0"]
 resource_name = "Tabs"
 script = ExtResource("36")
-names = PackedStringArray("Palettes")
+names = PackedStringArray("Palettes", "Game Genie Rig")
 
 [sub_resource type="Resource" id="Resource_hr77s"]
 resource_name = "Split"
@@ -393,6 +394,9 @@ layout_mode = 2
 
 [node name="Recorder" parent="DockableContainer" unique_id=184365863 instance=ExtResource("13")]
 visible = false
+layout_mode = 2
+
+[node name="Game Genie Rig" parent="DockableContainer" instance=ExtResource("GG_RigPanel")]
 layout_mode = 2
 
 [connection signal="item_rect_changed" from="DockableContainer/Main Canvas" to="." method="_on_main_canvas_item_rect_changed"]

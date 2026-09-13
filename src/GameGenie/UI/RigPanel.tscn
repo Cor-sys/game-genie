@@ -1,0 +1,212 @@
+[gd_scene load_steps=2 format=3 uid="uid://gg_rig_panel_01"]
+
+[ext_resource type="Script" path="res://src/GameGenie/UI/RigPanel.gd" id="1_panel"]
+
+[node name="GameGeniePanel" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+script = ExtResource("1_panel")
+
+[node name="HeaderContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="HeaderContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+text = "🎮 GAME GENIE STUDIO"
+
+[node name="CharacterRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="CharLabel" type="Label" parent="CharacterRow"]
+layout_mode = 2
+text = "Character:"
+
+[node name="CharacterNameEdit" type="LineEdit" parent="CharacterRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Hero"
+
+[node name="HSeparator1" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="HierarchyLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "SKELETON TREE"
+
+[node name="BoneTree" type="Tree" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+size_flags_vertical = 3
+hide_root = false
+
+[node name="HSeparator2" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="BoneInspector" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="BoneNameLabel" type="Label" parent="BoneInspector"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Bone: None"
+
+[node name="AngleRow" type="HBoxContainer" parent="BoneInspector"]
+layout_mode = 2
+
+[node name="AngleLabel" type="Label" parent="BoneInspector/AngleRow"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Angle:"
+
+[node name="AngleSlider" type="HSlider" parent="BoneInspector/AngleRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -180.0
+max_value = 180.0
+step = 1.0
+
+[node name="AngleSpinBox" type="SpinBox" parent="BoneInspector/AngleRow"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -180.0
+max_value = 180.0
+step = 1.0
+
+[node name="PosRow" type="HBoxContainer" parent="BoneInspector"]
+layout_mode = 2
+
+[node name="PosLabel" type="Label" parent="BoneInspector/PosRow"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Pos:"
+
+[node name="PosXSpinBox" type="SpinBox" parent="BoneInspector/PosRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1000.0
+max_value = 1000.0
+prefix = "X:"
+
+[node name="PosYSpinBox" type="SpinBox" parent="BoneInspector/PosRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1000.0
+max_value = 1000.0
+prefix = "Y:"
+
+[node name="PivotRow" type="HBoxContainer" parent="BoneInspector"]
+layout_mode = 2
+
+[node name="PivotLabel" type="Label" parent="BoneInspector/PivotRow"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Pivot:"
+
+[node name="PivotXSpinBox" type="SpinBox" parent="BoneInspector/PivotRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1000.0
+max_value = 1000.0
+prefix = "X:"
+
+[node name="PivotYSpinBox" type="SpinBox" parent="BoneInspector/PivotRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1000.0
+max_value = 1000.0
+prefix = "Y:"
+
+[node name="ZRow" type="HBoxContainer" parent="BoneInspector"]
+layout_mode = 2
+
+[node name="ZLabel" type="Label" parent="BoneInspector/ZRow"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Z-Index:"
+
+[node name="ZIndexSpinBox" type="SpinBox" parent="BoneInspector/ZRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -100.0
+max_value = 100.0
+
+[node name="SpritePathLabel" type="Label" parent="BoneInspector"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 10
+text = "No sprite assigned"
+text_overrun_behavior = 3
+
+[node name="HSeparator3" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="PosesLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "POSES (RECIPES)"
+
+[node name="PoseRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PoseOptionButton" type="OptionButton" parent="PoseRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ApplyPoseBtn" type="Button" parent="PoseRow"]
+layout_mode = 2
+text = "Apply"
+
+[node name="SavePoseBtn" type="Button" parent="PoseRow"]
+layout_mode = 2
+text = "+ Save"
+
+[node name="HSeparator4" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="NonDestructiveCheckBox" type="CheckBox" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+text = "Bake to [Rig_Bake] Layer"
+
+[node name="SnapButton" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+theme_override_font_sizes/font_size = 13
+text = "⚡ SNAP POSE TO TIMELINE"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "Open a File"
+size = Vector2i(450, 300)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+
+[connection signal="pressed" from="PoseRow/ApplyPoseBtn" to="." method="_on_apply_pose_pressed"]
+[connection signal="pressed" from="PoseRow/SavePoseBtn" to="." method="_on_save_pose_pressed"]
