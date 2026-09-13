@@ -393,15 +393,17 @@ func set_custom_cursor() -> void:
 
 
 func _show_splash_screen() -> void:
+	if restore_session_confirmation_dialog.visible:
+		return
 	if not Global.config_cache.has_section_key("preferences", "startup"):
 		Global.config_cache.set_value("preferences", "startup", true)
 
 	if Global.config_cache.get_value("preferences", "startup"):
 		# Wait for the window to adjust itself, so the popup is correctly centered
 		await get_tree().process_frame
-
-		splash_dialog.popup_centered_clamped()  # Splash screen
-		modulate = Color(0.5, 0.5, 0.5)
+		if not restore_session_confirmation_dialog.visible:
+			splash_dialog.popup_centered_clamped()  # Splash screen
+			modulate = Color(0.5, 0.5, 0.5)
 
 
 func _handle_cmdline_arguments() -> void:
