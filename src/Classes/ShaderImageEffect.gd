@@ -26,7 +26,8 @@ func generate_image(
 		size.y = 2
 		img.crop(img.get_width(), 2)
 		resized_height = true
-	if shader.get_mode() == Shader.MODE_TEXTURE_BLIT:
+	# In Godot 4.7+, Shader.MODE_TEXTURE_BLIT is 5
+	if int(shader.get_mode()) == 5:
 		handle_texture_blit_shader(img, shader, params, size)
 	elif shader.get_mode() == Shader.MODE_CANVAS_ITEM:
 		handle_canvas_item_shader(img, shader, params, size, dest_mat_after_gen)
@@ -45,18 +46,21 @@ func handle_texture_blit_shader(
 	params: Dictionary,
 	size: Vector2i,
 ) -> void:
-	var drawable_texture := DrawableTexture2D.new()
-	drawable_texture.setup(size.x, size.y, DrawableTexture2D.DRAWABLE_FORMAT_RGBA8)
+	if not ClassDB.class_exists("DrawableTexture2D"):
+		return
+	var drawable_texture = ClassDB.instantiate("DrawableTexture2D")
+	drawable_texture.call("setup", size.x, size.y, 0)
 	var material := ShaderMaterial.new()
 	material.shader = shader
 
 	for key in params:
 		material.set_shader_parameter(key, params[key])
 
-	drawable_texture.blit_rect(
+	drawable_texture.call(
+		"blit_rect",
 		Rect2i(0, 0, size.x, size.y), ImageTexture.create_from_image(img), Color.WHITE, 0, material
 	)
-	var drawable_image := drawable_texture.get_image()
+	var drawable_image = drawable_texture.call("get_image")
 	drawable_image.convert(img.get_format())
 	img.copy_from(drawable_image)
 
